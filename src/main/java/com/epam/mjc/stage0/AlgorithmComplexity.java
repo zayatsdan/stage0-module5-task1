@@ -19,28 +19,62 @@ public class AlgorithmComplexity {
     /**
      * Return the linear search complexity if the element you are looking for is at the end of the array.
      */
-    public Complexity badLinerSearch() {
-
+    public Complexity badLinearSearch(int[] array, int target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == target) {
+                return Complexity.O_N;
+            }
+        }
+        return null;  // Element not found
     }
 
     /**
      * Return the complexity of accessing an array element by index.
      */
-    public Complexity arrayIndexItemAccess() {
-
+    public Complexity arrayIndexItemAccess(int[] array, int index) {
+        int element = array[index];
+        return Complexity.O_1;
     }
 
     /**
      * Return the complexity of a binary search.
      */
-    public Complexity binarySorting() {
+    public Complexity binarySorting(int[] sortedArray, int target) {
+        int low = 0;
+        int high = sortedArray.length - 1;
 
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (sortedArray[mid] == target) {
+                return Complexity.O_LOG_N;
+            } else if (sortedArray[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return null;  // Element not found
     }
 
     /**
      * Return the complexity of the twoCycleSorting algorithm.
      */
-    public Complexity twoCycleSorting() {
+    public Complexity twoCycleSorting(int[] array) {
+        int n = array.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Compare adjacent elements and swap them if they are in the wrong order
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+        return Complexity.O_N_2;
 
     }
 }
