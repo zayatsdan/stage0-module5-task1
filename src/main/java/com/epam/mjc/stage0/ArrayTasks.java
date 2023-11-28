@@ -12,7 +12,7 @@ public class ArrayTasks {
      */
     
     public String[] seasonsArray() {
-        String[] season=new String[]{"winter","spring","summer","autumm"};
+        String[] season=new String[]{"winter","spring","summer","autumn"};
         return season;
     }
 
@@ -110,7 +110,7 @@ public class ArrayTasks {
         int counterA;
         int counterPositive=0;
         for (counterA=0;counterA<arr.length;counterA++){
-            if (arr[counterA]>=0){
+            if (arr[counterA]>0){
                 counterPositive++;
             }
         }
