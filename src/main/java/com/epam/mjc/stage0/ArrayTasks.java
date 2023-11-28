@@ -64,7 +64,6 @@ public class ArrayTasks {
      */
     public int findIndexOfNumber(int[] arr, int number) {
 
-        int number = 14;
         int index=-1;
         for (int counter=0;counter<= arr.length;counter++){
             if(arr[counter]==number){
@@ -138,6 +137,32 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        return 1;
+        
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    // Swap arrays if they are not in ascending order of length
+                    int[] temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        // Sort elements within each one-dimensional array using bubble sort
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length - 1; j++) {
+                for (int k = 0; k < arr[i].length - j - 1; k++) {
+                    if (arr[i][k] > arr[i][k + 1]) {
+                        // Swap elements if they are not in ascending order
+                        int temp = arr[i][k];
+                        arr[i][k] = arr[i][k + 1];
+                        arr[i][k + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        return arr;
     }
 }
